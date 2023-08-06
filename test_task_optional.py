@@ -89,9 +89,9 @@ df['updated'] = pd.to_datetime(df['updated']).dt.strftime('%d.%m.%y')
 df['rating'] = df['rating'].str.extract(r'Rated for (.+)', expand=False)
 
 # Устанавливаем подключение к базе данных и создаем новую схему 'test'. 
-# Вместо db нужно указать название базы данных, вместо host - адрес хоста, вместо port - порт соединения
 
-engine = create_engine("postgresql://db:login@host:port")
+
+engine = create_engine("postgresql://login:password@host:port")
 Session = sessionmaker(bind=engine)
 session = Session()
 engine.execute ("CREATE SCHEMA IF NOT EXISTS test")
