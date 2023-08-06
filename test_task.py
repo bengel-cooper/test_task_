@@ -54,8 +54,8 @@ df['review_count'] = df['review_count'].str.replace('reviews', '').str.replace('
 df['install_count'] = df['install_count'].str.replace('K', '*1e3', regex=True).str.replace('M', '*1e6', regex=True).str.replace('+', '').map(pd.eval).astype(int)
 
 # Устанавливаем подключение к базе данных и создаем новую схему 'test'. 
-# Вместо db нужно указать название базы данных, вместо host - адрес хоста, вместо port - порт соединения
-engine = create_engine("postgresql://db:login@host:port")
+# Вместо user нужно указать имя пользователя, вместо password - пароль, вместо host - адрес сервера базы данных(в моем случае БД одна и расположена локально), вместо port - порт соединения
+engine = create_engine("postgresql://user:password@host:port")
 Session = sessionmaker(bind=engine)
 session = Session()
 engine.execute ("CREATE SCHEMA IF NOT EXISTS test")
