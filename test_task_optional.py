@@ -80,7 +80,7 @@ def get_first_two_sentences(text):
 df['description'] = df['description'].apply(get_first_two_sentences)
 
 # Изменяем формат строк, и преобразуем их типы в целочисленный для столбцов 'review_count', 'install_count',
-#число с плавающей точкой для столбца 'average_rating' и дату в формате DD.MM.YY для столбца 'updated'
+#число с плавающей точкой для столбца 'average_rating' и дату в формате %d.%m.%y для столбца 'updated'
 #Также сокращаем запись в столбце 'rating' для удобства прочтения
 df['average_rating'] = df['average_rating'].str.replace('star', '').str.strip().astype(float)
 df['review_count'] = df['review_count'].str.replace('reviews', '').str.replace('K', '*1e3', regex=True).str.replace('M', '*1e6', regex=True).str.replace('+', '').map(pd.eval).astype(int)
